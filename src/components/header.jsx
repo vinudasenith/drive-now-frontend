@@ -3,7 +3,7 @@ import { FaCarSide, FaShoppingCart } from "react-icons/fa";
 
 export default function Header() {
     return (
-        <header className="bg-gradient-to-br from-gray-900 to-gray-800 text-white shadow-md">
+        <header className="bg-gradient-to-br from-[#001f3f] via-black to-[#01c0ff] text-white shadow-md">
             <div className="container mx-auto px-6 h-24 flex justify-between items-center">
 
                 <Link to="/home" className="flex items-center space-x-2">
