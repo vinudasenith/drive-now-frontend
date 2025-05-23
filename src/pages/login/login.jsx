@@ -1,21 +1,47 @@
 import { useState } from "react";
 import "./login.css";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
 
-    const handleOnSubmit = (e) => {
+    const handleOnSubmit = async (e) => {
         e.preventDefault();
         console.log("Logging in with:", { email, password });
 
+        try {
+            const res = await axios.post("http://localhost:3000/api/users/login", {
+                email,
+                password,
+            });
+
+            if (res.status === 200) {
+                const { token, user } = res.data;
+
+                localStorage.setItem("token", token);
+                toast.success("Login Successful");
+
+                if (user.role === "admin") {
+                    navigate("/admin");
+                } else {
+                    navigate("/");
+                }
+            } else {
+                toast.error("Invalid credentials");
+            }
+        } catch (err) {
+            console.error(err);
+            toast.error(err.response?.data?.error || "Login Failed");
+        }
     };
 
-    const googleLogin = () => {
-        console.log("Google login clicked");
 
-    };
+
 
     return (
         <div className="bg-gradient-to-br from-gray-900 to-gray-800 w-full h-screen flex justify-center items-center px-4">
@@ -57,12 +83,6 @@ export default function LoginPage() {
                     Login
                 </button>
 
-                <div
-                    className="w-full py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-lg font-medium text-center rounded-md cursor-pointer transition duration-200"
-                    onClick={googleLogin}
-                >
-                    Continue with Google
-                </div>
             </form>
         </div>
     );
