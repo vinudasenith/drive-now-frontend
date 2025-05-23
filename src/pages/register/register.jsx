@@ -2,6 +2,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FaUser, FaEnvelope, FaLock, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
+import { toast } from "react-hot-toast";
 
 export default function RegisterPage() {
     const [email, setEmail] = useState("");
@@ -13,6 +14,20 @@ export default function RegisterPage() {
 
     const navigate = useNavigate();
 
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+        console.log({ email, password, firstName, lastName, address, phoneNumber });
+        axios.post('http://localhost:3000/api/users', { email: email, password: password, firstName: firstName, lastName: lastName, address: address, phoneNumber: phoneNumber })
+            .then((res) => {
+                console.log(res);
+                navigate('/login');
+            })
+            .catch((err) => {
+                toast.error(err?.response?.data?.error || "Registration Failed");
+                console.log(err);
+            })
+    }
+
 
 
 
@@ -21,7 +36,7 @@ export default function RegisterPage() {
         <div className="bg-gradient-to-br from-[#001f3f] via-black to-[#01c0ff] w-full h-screen flex justify-center items-center">
 
             <form
-
+                onSubmit={handleOnSubmit}
                 className="w-full max-w-xl bg-white/10 backdrop-blur-lg border border-white/20 px-10 py-12 rounded-2xl shadow-2xl space-y-6"
             >
                 <h2 className="text-4xl font-extrabold text-center text-white tracking-wide mb-4">Sign Up</h2>
@@ -93,7 +108,7 @@ export default function RegisterPage() {
                         type="tel"
                         placeholder="Phone"
                         value={phoneNumber}
-                        onChange={(e) => setPhone(e.target.value)}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
                         className="w-full bg-transparent py-3 border-none focus:ring-2 focus:ring-yellow-400 focus:outline-none text-white placeholder-white/80"
                     />
                 </div>
