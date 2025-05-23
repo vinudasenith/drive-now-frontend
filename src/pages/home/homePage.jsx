@@ -3,7 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./home";
 import Gallery from "./gallery";
 import Contact from "./contact";
-import Vehicles from "./vehicle";
+import Vehicles from "./vehicles";
+import Error from "./error";
 
 
 export default function HomePage() {
@@ -17,6 +18,7 @@ export default function HomePage() {
                     <Route path="/gallery" element={<Gallery />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/vehicle" element={<Vehicles />} />
+                    <Route path="/*" element={<Error />} />
 
 
 
