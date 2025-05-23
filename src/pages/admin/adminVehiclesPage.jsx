@@ -10,7 +10,7 @@ export default function AdminVehiclesPage() {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products`, {
+        axios.get("http://localhost:3000/api/products", {
             headers: { Authorization: `Bearer ${token}` },
         })
             .then((res) => {
@@ -21,13 +21,13 @@ export default function AdminVehiclesPage() {
             .catch((err) => {
                 console.error(err);
             });
-    }, [vehiclesLoaded]);
+    }, []);
 
     const handleDelete = (vehicleKey) => {
         if (window.confirm("Are you sure you want to delete this vehicle?")) {
             setVehicles(vehicles.filter((vehicle) => vehicle.key !== vehicleKey));
             const token = localStorage.getItem("token");
-            axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/products/${vehicleKey}`, {
+            axios.delete(`http://localhost:3000/api/products/${vehicleKey}`, {
                 headers: { Authorization: `Bearer ${token}` },
             })
                 .then((res) => {
@@ -40,8 +40,9 @@ export default function AdminVehiclesPage() {
         }
     };
 
+
     return (
-        <div className="w-full min-h-screen bg-gradient-to-br from-sky-100 via-white to-blue-100 p-6 flex flex-col">
+        <div className="w-full h-[700px] bg-gradient-to-br from-sky-100 via-white to-blue-100 p-6 flex flex-col">
             {!vehiclesLoaded && (
                 <div className="flex justify-center items-center py-12">
                     <div className="border-8 border-blue-200 border-t-blue-500 rounded-full w-[80px] h-[80px] animate-spin"></div>
@@ -57,7 +58,7 @@ export default function AdminVehiclesPage() {
                                 <th className="px-5 py-3 text-left">Make</th>
                                 <th className="px-5 py-3 text-left">Model</th>
                                 <th className="px-5 py-3 text-left">Year</th>
-                                <th className="px-5 py-3 text-left">Type</th>
+                                <th className="px-5 py-3 text-left">Transmission</th>
                                 <th className="px-5 py-3 text-left">Rate/Day (LKR)</th>
                                 <th className="px-5 py-3 text-left">Availability</th>
                                 <th className="px-5 py-3 text-center">Actions</th>
@@ -70,13 +71,19 @@ export default function AdminVehiclesPage() {
                                     <td className="px-5 py-3">{vehicle.make}</td>
                                     <td className="px-5 py-3">{vehicle.model}</td>
                                     <td className="px-5 py-3">{vehicle.year}</td>
-                                    <td className="px-5 py-3">{vehicle.type}</td>
-                                    <td className="px-5 py-3 font-medium text-blue-700">LKR {vehicle.price.toFixed(2)}</td>
-                                    <td className="px-5 py-3">
-                                        <span className={`text-sm font-semibold ${vehicle.availability ? "text-green-600" : "text-red-500"}`}>
-                                            {vehicle.availability ? "Available" : "Unavailable"}
-                                        </span>
+                                    <td className="px-5 py-3">{vehicle.transmission}</td>
+                                    <td className="px-5 py-3 font-medium text-blue-700">
+                                        LKR {typeof vehicle.price === "number" ? vehicle.dailyRate.toFixed(2) : vehicle.dailyRate}
                                     </td>
+
+                                    <td className="px-5 py-3 font-medium">
+                                        {vehicle.isAvailable ? (
+                                            <span className="text-green-500 font-semibold">Available</span>
+                                        ) : (
+                                            <span className="text-red-500 font-semibold">Unavailable</span>
+                                        )}
+                                    </td>
+
                                     <td className="px-5 py-3 text-center">
                                         <div className="flex justify-center gap-4">
                                             <button
