@@ -59,6 +59,7 @@ export default function AdminVehiclesPage() {
                                 <th className="px-5 py-3 text-left">Model</th>
                                 <th className="px-5 py-3 text-left">Year</th>
                                 <th className="px-5 py-3 text-left">Transmission</th>
+                                <th className="px-5 py-3 text-left">seats</th>
                                 <th className="px-5 py-3 text-left">Rate/Day (LKR)</th>
                                 <th className="px-5 py-3 text-left">Availability</th>
                                 <th className="px-5 py-3 text-center">Actions</th>
@@ -72,6 +73,7 @@ export default function AdminVehiclesPage() {
                                     <td className="px-5 py-3">{vehicle.model}</td>
                                     <td className="px-5 py-3">{vehicle.year}</td>
                                     <td className="px-5 py-3">{vehicle.transmission}</td>
+                                    <td className="px-5 py-3">{vehicle.seats}</td>
                                     <td className="px-5 py-3 font-medium text-blue-700">
                                         LKR {typeof vehicle.price === "number" ? vehicle.dailyRate.toFixed(2) : vehicle.dailyRate}
                                     </td>
