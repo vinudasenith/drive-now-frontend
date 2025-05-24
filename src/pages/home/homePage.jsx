@@ -5,6 +5,9 @@ import Gallery from "./gallery";
 import Contact from "./contact";
 import Vehicles from "./vehicles";
 import Error from "./error";
+import VehicleOverview from "./vehicleOverview";
+import BookingPage from "./bookingPage";
+
 
 
 export default function HomePage() {
@@ -18,6 +21,9 @@ export default function HomePage() {
                     <Route path="/gallery" element={<Gallery />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/vehicle" element={<Vehicles />} />
+                    <Route path="/booking" element={<BookingPage />} />
+
+                    <Route path="/products/:key" element={<VehicleOverview />} />
                     <Route path="/*" element={<Error />} />
 
 
