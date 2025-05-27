@@ -12,7 +12,6 @@ export function loadCart() {
         localStorage.setItem("cart", cartString);
         return cart;
     }
-
     cart = JSON.parse(cart);
     return cart;
 }
@@ -25,7 +24,6 @@ export function addToCart(key, qty) {
         if (cart.orderedItems[i].key == key) {
             cart.orderedItems[i].qty += qty;
             found = true;
-
         }
     }
 
@@ -35,13 +33,11 @@ export function addToCart(key, qty) {
 
     const cartString = JSON.stringify(cart);
     localStorage.setItem("cart", cartString);
-
-
 }
 
 export function removeFromCart(key) {
     const cart = loadCart();
-    const newCart = cart.orderedItems.filter(item => item.key != key);
+    const newCart = cart.orderedItems.filter((item) => item.key != key);
     cart.orderedItems = newCart;
     const cartString = JSON.stringify(cart);
     localStorage.setItem("cart", cartString);
@@ -49,7 +45,7 @@ export function removeFromCart(key) {
 
 export function formatDate(date) {
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Ensure two digits
+    const day = String(date.getDate()).padStart(2, '0'); // Ensure two digits
     return `${year}-${month}-${day}`;
 }
