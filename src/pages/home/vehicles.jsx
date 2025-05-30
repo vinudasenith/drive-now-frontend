@@ -47,7 +47,7 @@ export default function Vehicles() {
     }, []);
 
     return (
-        <div className="w-full min-h-screen bg-gray-400 text-white flex flex-wrap justify-center gap-6 pt-[50px] px-4">
+        <div className="w-full min-h-screen bg-white text-white flex flex-wrap justify-center gap-6 pt-[50px] px-4">
             {
                 state === "loading" &&
                 <div className="w-full h-[300px] flex justify-center items-center">
