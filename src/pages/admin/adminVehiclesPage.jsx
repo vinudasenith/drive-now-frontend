@@ -25,20 +25,23 @@ export default function AdminVehiclesPage() {
 
     const handleDelete = (vehicleKey) => {
         if (window.confirm("Are you sure you want to delete this vehicle?")) {
-            setVehicles(vehicles.filter((vehicle) => vehicle.key !== vehicleKey));
             const token = localStorage.getItem("token");
+
             axios.delete(`http://localhost:3000/api/products/${vehicleKey}`, {
                 headers: { Authorization: `Bearer ${token}` },
             })
                 .then((res) => {
                     console.log(res.data);
-                    setVehiclesLoaded(false);
+
+                    setVehicles(prevVehicles => prevVehicles.filter((vehicle) => vehicle.key !== vehicleKey));
                 })
                 .catch((err) => {
-                    console.log(err);
+                    console.error("Failed to delete vehicle:", err);
+                    alert("Failed to delete vehicle. Please try again.");
                 });
         }
     };
+
 
 
     return (
