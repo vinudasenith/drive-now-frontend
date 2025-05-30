@@ -40,50 +40,130 @@ export default function LoginPage() {
         }
     };
 
-
-
-
     return (
-        <div className="bg-gradient-to-br from-gray-900 to-gray-800 w-full h-screen flex justify-center items-center px-4">
-            <form
-                onSubmit={handleOnSubmit}
-                className="w-full max-w-md bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl p-8 space-y-6"
-            >
-                <div className="flex flex-col items-center">
-                    <img
-                        src="/logo.png"
-                        alt="Rent A Car Logo"
-                        className="w-80 h-80 object-contain"
-                    />
+        <div className="relative w-full min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900">
+            {/* Animated background patterns with pure CSS */}
+            <div className="absolute inset-0">
+                <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500/10 rounded-full animate-pulse"></div>
+                <div className="absolute top-1/4 right-20 w-24 h-24 bg-blue-400/10 rounded-full animate-bounce delay-1000"></div>
+                <div className="absolute bottom-1/3 left-1/4 w-40 h-40 bg-blue-600/10 rounded-full animate-pulse delay-500"></div>
+                <div className="absolute bottom-10 right-10 w-28 h-28 bg-blue-300/10 rounded-full animate-bounce delay-700"></div>
+                <div className="absolute top-1/2 left-1/2 w-20 h-20 bg-blue-500/10 rounded-full animate-pulse delay-300"></div>
+            </div>
+
+            {/* Overlay gradient for depth */}
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-900/60 via-slate-800/40 to-slate-900/80"></div>
+
+            {/* Login Form Container */}
+            <div className="relative z-10 w-full min-h-screen flex">
+                {/* Left side - Branding */}
+                <div className="hidden lg:flex lg:w-1/2 xl:w-3/5 items-center justify-center p-12">
+                    <div className="max-w-lg text-center space-y-8">
+                        <div className="space-y-6">
+                            <h1 className="text-4xl xl:text-5xl font-bold text-white leading-tight">
+                                Welcome to
+                                <span className="block text-blue-400 mt-2">Drive-Now Rentals</span>
+                            </h1>
+                            <p className="text-xl text-gray-300 leading-relaxed">
+                                Premium car rentals for modern travelers. Experience exceptional service with our carefully curated fleet.
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-2 gap-6 pt-8">
+                            <div className="text-center">
+                                <div className="text-3xl font-bold text-blue-400">500+</div>
+                                <div className="text-gray-400 text-sm">Premium Vehicles</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-3xl font-bold text-blue-400">24/7</div>
+                                <div className="text-gray-400 text-sm">Customer Support</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-3xl font-bold text-blue-400">15+</div>
+                                <div className="text-gray-400 text-sm">City Locations</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-3xl font-bold text-blue-400">98%</div>
+                                <div className="text-gray-400 text-sm">Satisfaction Rate</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div className="space-y-2">
-                    <input
-                        type="email"
-                        placeholder="Email address"
-                        className="w-full px-4 py-2 rounded-md bg-white/5 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        className="w-full px-4 py-2 rounded-md bg-white/5 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
+                {/* Right side - Login Form */}
+                <div className="w-full lg:w-1/2 xl:w-2/5 flex items-center justify-center p-6 lg:p-12">
+                    <div className="w-full max-w-md">
+                        {/* Logo Section */}
+                        <div className="text-center mb-8">
+                            <img
+                                src="/logo.png"
+                                alt="Rent A Car Logo"
+                                className="w-24 h-24 mx-auto object-contain mb-6"
+                            />
+                            <h2 className="text-2xl font-bold text-white mb-2">Sign In</h2>
+                            <p className="text-gray-400">Access your rental dashboard</p>
+                        </div>
+
+                        {/* Login Form */}
+                        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-8 space-y-6">
+                            <div className="space-y-4">
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                                        Email Address
+                                    </label>
+                                    <input
+                                        type="email"
+                                        placeholder="Enter your email"
+                                        className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                                        Password
+                                    </label>
+                                    <input
+                                        type="password"
+                                        placeholder="Enter your password"
+                                        className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="flex items-center justify-between text-sm">
+                                <label className="flex items-center text-gray-300">
+                                    <input type="checkbox" className="w-4 h-4 rounded border-gray-600 text-blue-600 focus:ring-blue-500 focus:ring-offset-gray-800" />
+                                    <span className="ml-2">Remember me</span>
+                                </label>
+                                <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors">
+                                    Forgot password?
+                                </a>
+                            </div>
+
+                            <button
+                                type="submit"
+                                onClick={handleOnSubmit}
+                                className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                            >
+                                Sign In
+                            </button>
+
+                            <div className="text-center">
+                                <p className="text-gray-400">
+                                    Don't have an account?
+                                    <a href="#" className="text-blue-400 hover:text-blue-300 ml-1 font-medium transition-colors">
+                                        Sign up
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <button
-                    type="submit"
-                    className="w-full py-3 bg-yellow-500 hover:bg-yellow-600 text-white text-lg font-semibold rounded-md transition duration-200"
-                >
-                    Login
-                </button>
-
-            </form>
+            </div>
         </div>
     );
 }
