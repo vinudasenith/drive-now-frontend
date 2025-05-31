@@ -12,12 +12,16 @@ export default function AdminOrdersPage() {
         const fetchOrders = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const res = await axios.get("http://localhost:3000/api/orders", {
-                    headers: { Authorization: `Bearer ${token}` },
-                });
+                const res = await axios.get(
+                    `${import.meta.env.VITE_BACKEND_URL}/api/orders/`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
                 console.log(res.data);
                 setOrders(res.data);
-
             } catch (error) {
                 console.error("Error fetching orders:", error);
             } finally {
@@ -31,16 +35,23 @@ export default function AdminOrdersPage() {
 
     function handleOrderStatusChange(orderId, status) {
         const token = localStorage.getItem("token");
-        axios.put(`http://localhost:3000/api/orders/${orderId}`, { status }, {
-            headers: {
-                Authorization: `Bearer ${token}`
+
+        axios.put(
+            `${import.meta.env.VITE_BACKEND_URL}/api/orders/status/${orderId}`,
+            {
+                status: status,
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
             }
-        }).then(() => {
+        ).then(() => {
             console.log("Order status updated");
             setModalOpened(false);
             setLoading(true);
         }).catch((err) => {
-            console.log(err);
+            console.error(err);
             setLoading(true);
         })
     }
