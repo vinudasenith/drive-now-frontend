@@ -2,15 +2,17 @@ export default function Gallery() {
     // Sample image paths (you can replace with actual car images)
     const cars = [
         "car1.jpg",
-        "car2.jpg",
+        "car2.webp",
         "car3.jpg",
         "car4.jpg",
         "car5.jpg",
-        "car6.jpg",
-        "car7.jpg",
-        "car8.jpg",
+        "car6.webp",
+        "car7.webp",
+        "car8.webp",
         "car9.jpg",
         "car10.jpg",
+        "car11.jpg",
+        "car12.jpg",
     ];
 
     return (
