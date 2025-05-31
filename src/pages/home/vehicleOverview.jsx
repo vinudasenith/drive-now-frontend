@@ -119,7 +119,7 @@ export default function VehicleOverview() {
                                                     <svg className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
                                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                                     </svg>
-                                                    <span className="text-sm font-medium text-slate-600">4.8 (24 reviews)</span>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -173,17 +173,7 @@ export default function VehicleOverview() {
                                 </div>
 
                                 {/* Description */}
-                                <div className="mb-8">
-                                    <h3 className="text-xl font-semibold text-slate-800 mb-4 flex items-center">
-                                        <svg className="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
-                                        About This Vehicle
-                                    </h3>
-                                    <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-                                        <p className="text-slate-700 leading-relaxed">{vehicle.description}</p>
-                                    </div>
-                                </div>
+
 
                                 {/* CTA Button */}
                                 <button
@@ -214,7 +204,7 @@ export default function VehicleOverview() {
                                     <ul className="space-y-2 text-slate-600">
                                         <li className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>Full insurance coverage</li>
                                         <li className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>24/7 roadside assistance</li>
-                                        <li className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>Free cancellation up to 24h</li>
+                                        <li className="flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>Traveling 200 km each day.</li>
                                     </ul>
                                 </div>
                             </div>
