@@ -94,11 +94,6 @@ export default function LoginPage() {
                     <div className="w-full max-w-md">
                         {/* Logo Section */}
                         <div className="text-center mb-8">
-                            <img
-                                src="/logo.png"
-                                alt="Rent A Car Logo"
-                                className="w-24 h-24 mx-auto object-contain mb-6"
-                            />
                             <h2 className="text-2xl font-bold text-white mb-2">Sign In</h2>
                             <p className="text-gray-400">Access your rental dashboard</p>
                         </div>
