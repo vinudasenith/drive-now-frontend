@@ -4,6 +4,7 @@ import axios from "axios";
 export default function AdminUsersPage() {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [updating, setUpdating] = useState({});
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -11,9 +12,7 @@ export default function AdminUsersPage() {
                 const token = localStorage.getItem('token');
                 const res = await axios.get('http://localhost:3000/api/users/all', {
                     headers: { Authorization: `Bearer ${token}` },
-
                 });
-                console.log(res.data);
                 setUsers(res.data);
             } catch (error) {
                 console.error("Error fetching users:", error);
@@ -21,30 +20,38 @@ export default function AdminUsersPage() {
                 setLoading(false);
             }
         }
-        if (loading) {
-            fetchUsers();
-        }
-    }, [loading]);
+        fetchUsers();
+    }, []);
 
-    function handleBlockUser(email) {
+    async function handleBlockUser(email) {
+        setUpdating(prev => ({ ...prev, [email]: true }));
         const token = localStorage.getItem('token');
-        axios.put(`http://localhost:3000/api/users/block/${email}`, {}, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
 
-        }).then(() => {
-            setLoading(true);
+        try {
+            await axios.put(`http://localhost:3000/api/users/block/${email}`, {}, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
 
-        }).catch((err) => {
-            console.log(err);
-        })
+            setUsers(prevUsers =>
+                prevUsers.map(user =>
+                    user.email === email
+                        ? { ...user, isBlocked: !user.isBlocked }
+                        : user
+                )
+            );
+        } catch (err) {
+            console.log("Block user error:", err);
+            alert(`Failed to update user status: ${err.response?.data?.error || err.message}`);
+        } finally {
+            setUpdating(prev => ({ ...prev, [email]: false }));
+        }
     }
+
     return (
         <div className="p-6">
             <h1 className="text-3xl font-bold text-gray-800 mb-6">Admin Users</h1>
             {loading ? (
-                <p className="text-center text-gray-500 italic">Loading...</p>
+                <p className="text-center text-gray-500 italic">Loading users...</p>
             ) : (
                 <div className="overflow-x-auto">
                     <table className="min-w-full bg-white border border-gray-300 rounded-xl shadow-lg">
@@ -63,7 +70,7 @@ export default function AdminUsersPage() {
                             {users.map((user) => (
                                 <tr
                                     key={user._id}
-                                    className="border-t border-gray-200 hover:bg-yellow-100 hover:text-black transition duration-150"
+                                    className="border-t border-gray-200 hover:bg-yellow-100 transition duration-150"
                                 >
                                     <td className="px-5 py-3">
                                         <img
@@ -82,15 +89,19 @@ export default function AdminUsersPage() {
                                     </td>
                                     <td className="px-5 py-3">{user.address}</td>
                                     <td
-                                        onClick={() => {
-                                            handleBlockUser(user.email);
-                                        }}
+                                        onClick={() => !updating[user.email] && handleBlockUser(user.email)}
                                         className={`px-5 py-3 font-semibold cursor-pointer ${user.isBlocked
-                                            ? "text-red-600 hover:underline"
-                                            : "text-green-600 hover:underline"
-                                            }`}
+                                                ? "text-red-600 hover:text-red-800"
+                                                : "text-green-600 hover:text-green-800"
+                                            } transition-colors`}
                                     >
-                                        {user.isBlocked ? "BLOCKED" : "ACTIVE"}
+                                        {updating[user.email] ? (
+                                            <span className="italic">Updating...</span>
+                                        ) : user.isBlocked ? (
+                                            <span className="hover:underline">BLOCKED</span>
+                                        ) : (
+                                            <span className="hover:underline">ACTIVE</span>
+                                        )}
                                     </td>
                                 </tr>
                             ))}
@@ -99,6 +110,5 @@ export default function AdminUsersPage() {
                 </div>
             )}
         </div>
-
     );
 }
