@@ -8,6 +8,8 @@ import AdminOrdersPage from "./adminOrdersPage";
 import AdminVehiclePage from "./adminVehiclesPage";
 import AdminUsersPage from "./adminUsersPage";
 import AddVehiclePage from "./addVehiclePage";
+import UpdateVehiclePage from "./updateVehiclePage";
+
 
 export default function AdminPage() {
     return (
@@ -62,6 +64,7 @@ export default function AdminPage() {
                     <Route path="/vehicles" element={<AdminVehiclePage />} />
                     <Route path="/users" element={<AdminUsersPage />} />
                     <Route path="/vehicles/add" element={<AddVehiclePage />} />
+                    <Route path="/vehicles/edit" element={<UpdateVehiclePage />} />
 
 
 
