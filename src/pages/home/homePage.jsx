@@ -7,6 +7,7 @@ import Vehicles from "./vehicles";
 import Error from "./error";
 import VehicleOverview from "./vehicleOverview";
 import BookingPage from "./bookingPage";
+import ReviewPage from "./reviewPage";
 
 
 
@@ -22,6 +23,7 @@ export default function HomePage() {
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/vehicle" element={<Vehicles />} />
                     <Route path="/booking" element={<BookingPage />} />
+                    <Route path="/reviews" element={<ReviewPage />} />
 
                     <Route path="/products/:key" element={<VehicleOverview />} />
                     <Route path="/*" element={<Error />} />
