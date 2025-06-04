@@ -3,12 +3,14 @@ import { BsFillSaveFill } from "react-icons/bs";
 import { RiAlignItemBottomLine } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { MdOutlineReviews } from "react-icons/md";
 import { Route, Routes } from "react-router-dom";
 import AdminOrdersPage from "./adminOrdersPage";
 import AdminVehiclePage from "./adminVehiclesPage";
 import AdminUsersPage from "./adminUsersPage";
 import AddVehiclePage from "./addVehiclePage";
 import UpdateVehiclePage from "./updateVehiclePage";
+import AdminReviewPage from "./adminReviewPage";
 
 
 export default function AdminPage() {
@@ -46,6 +48,14 @@ export default function AdminPage() {
                     </Link>
 
                     <Link
+                        to="/admin/reviews"
+                        className="flex items-center gap-3 text-lg font-medium hover:bg-gray-800 px-4 py-2 rounded transition"
+                    >
+                        <MdOutlineReviews className="text-yellow-400" />
+                        Reviews
+                    </Link>
+
+                    <Link
                         to="/admin/users"
                         className="flex items-center gap-3 text-lg font-medium hover:bg-gray-800 px-4 py-2 rounded transition"
                     >
@@ -65,6 +75,8 @@ export default function AdminPage() {
                     <Route path="/users" element={<AdminUsersPage />} />
                     <Route path="/vehicles/add" element={<AddVehiclePage />} />
                     <Route path="/vehicles/edit" element={<UpdateVehiclePage />} />
+                    <Route path="/reviews" element={<AdminReviewPage />} />
+
 
 
 
