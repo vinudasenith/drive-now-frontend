@@ -15,7 +15,8 @@ export default function ReviewPage() {
         const fetchReviews = async () => {
             try {
                 const res = await axios.get(
-                    `${import.meta.env.VITE_BACKEND_URL}/api/reviews`
+                    `http://localhost:3000/api/reviews`
+
                 );
                 setReviews(res.data);
             } catch (error) {
@@ -46,7 +47,7 @@ export default function ReviewPage() {
             );
             setHasSubmitted(true);
             setUserReview({ rating: 0, comment: "" });
-            // Refresh reviews
+
             const res = await axios.get(
                 `${import.meta.env.VITE_BACKEND_URL}/api/reviews`
             );
