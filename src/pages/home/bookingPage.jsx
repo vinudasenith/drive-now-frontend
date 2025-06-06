@@ -21,13 +21,12 @@ export default function BookingPage() {
         try {
             const currentCart = loadCart();
 
-            // If cart is empty, set total to 0
+
             if (!currentCart.orderedItems?.length) {
                 setTotal(0);
                 return;
             }
 
-            // Prepare request data
             const requestData = {
                 orderedItems: currentCart.orderedItems,
                 startingDate,
@@ -35,18 +34,18 @@ export default function BookingPage() {
                 days: daysBetween
             };
 
-            // Make API request
+
             const response = await axios.post(
                 `${import.meta.env.VITE_BACKEND_URL}/api/orders/quote`,
                 requestData
             );
 
-            // Handle successful response
+
             if (response.data?.success) {
                 if (response.data.total !== null && response.data.total !== undefined) {
                     setTotal(response.data.total);
                 } else {
-                    // If server returns null, calculate client-side
+
                     const calculatedTotal = calculateTotalManually(currentCart);
                     setTotal(calculatedTotal);
                     console.warn('Used client-side calculation due to null server response');
@@ -65,13 +64,13 @@ export default function BookingPage() {
         }
     }
     async function handleBookingCreation() {
-        // Validate cart has items
+
         if (cart.orderedItems.length === 0) {
             toast.error("Please add vehicles to your booking");
             return;
         }
 
-        // Validate dates
+
         if (new Date(endingDate) <= new Date(startingDate)) {
             toast.error("End date must be after start date");
             return;
@@ -91,7 +90,7 @@ export default function BookingPage() {
                 startingDate,
                 endingDate,
                 days: daysBetween,
-                total // Include the calculated total
+                total
             };
 
             const response = await axios.post(
@@ -105,14 +104,14 @@ export default function BookingPage() {
                 }
             );
 
-            // Success handling
+
             localStorage.removeItem("cart");
             toast.success("Booking created successfully!", { id: toastId });
 
-            // Refresh cart and reset if needed
+
             setCart({ orderedItems: [], vehicles: [] });
 
-            // Optional: Redirect or show confirmation
+
             return response.data;
         } catch (error) {
             console.error("Booking error:", error);
@@ -123,14 +122,14 @@ export default function BookingPage() {
 
             toast.error(errorMessage, { id: toastId });
 
-            // Return error for further handling if needed
+
             throw error;
         } finally {
             setIsLoading(false);
         }
     }
 
-    // Helper function for manual calculation
+
     function calculateTotalManually(cart) {
         return cart.orderedItems.reduce((sum, item) => {
             const vehicle = cart.vehicles?.find(v => v.key === item.key);
@@ -142,7 +141,7 @@ export default function BookingPage() {
 
     useEffect(() => {
         calculateTotal();
-    }, [startingDate, endingDate, cart.orderedItems.length]); // Add cart.orderedItems.length as dependency
+    }, [startingDate, endingDate, cart.orderedItems.length]);
 
     function handleBookingCreation() {
         if (cart.orderedItems.length === 0) {
@@ -173,7 +172,7 @@ export default function BookingPage() {
             .then((res) => {
                 localStorage.removeItem("cart");
                 toast.success("Booking Created Successfully!");
-                setCart(loadCart()); // Refresh the cart
+                setCart(loadCart());
             })
             .catch((err) => {
                 console.error(err);
@@ -185,7 +184,7 @@ export default function BookingPage() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
             <div className="container mx-auto px-4 py-12 max-w-6xl">
-                {/* Header Section */}
+
                 <div className="text-center mb-12">
                     <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
                         Create Booking
@@ -194,7 +193,7 @@ export default function BookingPage() {
                 </div>
 
                 <div className="grid lg:grid-cols-3 gap-8">
-                    {/* Left Column - Date Selection */}
+
                     <div className="lg:col-span-1">
                         <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-8 sticky top-8">
                             <h2 className="text-xl font-semibold text-slate-800 mb-6 flex items-center">
@@ -241,9 +240,8 @@ export default function BookingPage() {
                         </div>
                     </div>
 
-                    {/* Right Column - Vehicle List and Summary */}
                     <div className="lg:col-span-2 space-y-8">
-                        {/* Vehicle Selection */}
+
                         <div>
                             <h2 className="text-2xl font-semibold text-slate-800 mb-6 flex items-center">
                                 <svg className="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
