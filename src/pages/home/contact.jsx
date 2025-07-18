@@ -104,7 +104,7 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                                        <p className="text-gray-600">rentals.uptown@gmail.com</p>
+                                        <p className="text-gray-600">rentals.drivenow@gmail.com</p>
                                         <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
                                     </div>
                                 </div>
@@ -118,7 +118,7 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-gray-900 mb-1">Location</h3>
-                                        <p className="text-gray-600">123 Main Street, Colombo, Sri Lanka</p>
+                                        <p className="text-gray-600"> Main Street, Matara, Sri Lanka</p>
                                         <p className="text-sm text-gray-500">Visit our showroom</p>
                                     </div>
                                 </div>
@@ -132,7 +132,7 @@ export default function Contact() {
                                     <div>
                                         <h3 className="font-semibold text-gray-900 mb-1">Working Hours</h3>
                                         <p className="text-gray-600">Monday - Sunday</p>
-                                        <p className="text-sm text-gray-500">7:00 AM - 7:00 PM</p>
+                                        <p className="text-sm text-gray-500">9:00 AM - 9:00 PM</p>
                                     </div>
                                 </div>
                             </div>
