@@ -34,8 +34,14 @@ export default function ReviewPage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("❌ Please log in to submit a review.");
+            return;
+        }
         try {
-            const token = localStorage.getItem("token");
+
             await axios.post(
                 `${import.meta.env.VITE_BACKEND_URL}/api/reviews`,
                 userReview,
