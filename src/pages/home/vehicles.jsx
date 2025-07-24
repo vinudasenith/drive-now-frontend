@@ -30,7 +30,7 @@ export default function Vehicles() {
     useEffect(() => {
         if (state === "loading") {
             console.log("Making API call...");
-            axios.get("http://localhost:3000/api/products")
+            axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products`)
                 .then((res) => {
                     console.log("API Response Data:", res.data);
                     console.log("Data Type:", Array.isArray(res.data) ? "Array" : typeof res.data);

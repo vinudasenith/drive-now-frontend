@@ -37,7 +37,7 @@ export default function AddVehiclePage() {
             try {
                 const imageUrls = await Promise.all(promises);
                 console.log("Uploaded images:", imageUrls);
-                const result = await axios.post("http://localhost:3000/api/products", {
+                const result = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/vehicles`, {
                     key: vehicleKey,
                     model: vehicleModel,
                     make: vehicleMake,

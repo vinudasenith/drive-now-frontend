@@ -27,7 +27,7 @@ export default function AdminVehiclesPage() {
         if (window.confirm("Are you sure you want to delete this vehicle?")) {
             const token = localStorage.getItem("token");
 
-            axios.delete(`http://localhost:3000/api/products/${vehicleKey}`, {
+            axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/products/${vehicleKey}`, {
                 headers: { Authorization: `Bearer ${token}` },
             })
                 .then((res) => {

@@ -10,7 +10,7 @@ export default function AdminUsersPage() {
         const fetchUsers = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get('http://localhost:3000/api/users/all', {
+                const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/users`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setUsers(res.data);
@@ -91,8 +91,8 @@ export default function AdminUsersPage() {
                                     <td
                                         onClick={() => !updating[user.email] && handleBlockUser(user.email)}
                                         className={`px-5 py-3 font-semibold cursor-pointer ${user.isBlocked
-                                                ? "text-red-600 hover:text-red-800"
-                                                : "text-green-600 hover:text-green-800"
+                                            ? "text-red-600 hover:text-red-800"
+                                            : "text-green-600 hover:text-green-800"
                                             } transition-colors`}
                                     >
                                         {updating[user.email] ? (
