@@ -94,7 +94,7 @@ export default function BookingPage() {
             };
 
             const response = await axios.post(
-                `http://localhost:3000/api/orders`,
+                `${import.meta.env.VITE_BACKEND_URL}/api/orders`,
                 bookingData,
                 {
                     headers: {
