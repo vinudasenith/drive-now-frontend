@@ -1,3 +1,5 @@
+import { FaCarSide } from "react-icons/fa";
+
 export default function Home() {
     return (
         <div className="w-full h-full bg-white text-gray-800 font-sans antialiased">
@@ -32,6 +34,9 @@ export default function Home() {
                                     Learn More
                                 </a>
                             </div>
+                        </div>
+                        <div className="hidden lg:flex items-right ml-8 text-blue-400">
+                            <FaCarSide size={350} />
                         </div>
                     </div>
                 </div>
