@@ -14,7 +14,7 @@ export default function VehicleOverview() {
     const [vehicle, setVehicles] = useState({});
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/api/products/${key}`).then((res) => {
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products`).then((res) => {
             setVehicles(res.data);
             setLoadingStatus("loaded");
             console.log(res.data);
