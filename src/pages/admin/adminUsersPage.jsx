@@ -10,7 +10,7 @@ export default function AdminUsersPage() {
         const fetchUsers = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/users`, {
+                const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/users/all`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setUsers(res.data);
@@ -28,17 +28,15 @@ export default function AdminUsersPage() {
         const token = localStorage.getItem('token');
 
         try {
-            await axios.put(`http://localhost:3000/api/users/block/${email}`, {}, {
+            await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/users/block/${email}`, {}, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 
-            setUsers(prevUsers =>
-                prevUsers.map(user =>
-                    user.email === email
-                        ? { ...user, isBlocked: !user.isBlocked }
-                        : user
-                )
-            );
+            const refreshed = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/users/all`, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+            setUsers(refreshed.data);
+
         } catch (err) {
             console.log("Block user error:", err);
             alert(`Failed to update user status: ${err.response?.data?.error || err.message}`);
