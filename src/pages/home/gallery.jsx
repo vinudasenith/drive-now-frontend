@@ -1,5 +1,5 @@
 export default function Gallery() {
-    // Sample image paths (you can replace with actual car images)
+    // Sample image paths
     const cars = [
         "car1.jpg",
         "car2.webp",

@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
-import toast from "react-hot-toast";
-import mediaUpload from "../../utils/mediaUpload";
+
 export default function UpdateVehiclePage() {
-    const location = useLocation();
+    const location = useLocation();//// Access data passed via navigation state
     console.log(location);
 
+    // Initialize state with current vehicle data 
     const [vehicleKey, setVehicleKey] = useState(location.state.key);
     const [vehicleModel, setVehicleModel] = useState(location.state.model);
     const [vehicleMake, setVehicleMake] = useState(location.state.make);

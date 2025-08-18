@@ -4,29 +4,12 @@ import toast from "react-hot-toast";
 import ProductCard from "../../components/productCard";
 
 export default function Vehicles() {
+
+    //track loading state
     const [state, setState] = useState("loading");
     const [vehicles, setVehicles] = useState([]);
 
-    // useEffect(() => {
-    //     if (state === "loading") {
-    //         // Temporary mock data
-    //         const mockData = [{
-    //             key: "mock1",
-    //             make: "Honda",
-    //             model: "Civic",
-    //             year: 2022,
-    //             carType: "Sedan",
-    //             dailyRate: 2500,
-    //             isAvailable: true,
-    //             seats: 5,
-    //             image: "https://example.com/car.jpg",
-    //             description: "Test vehicle"
-    //         }];
-    //         setVehicles(mockData);
-    //         setState("success");
-    //     }
-    // }, []);
-
+    // Fetch vehicle data when component mounts
     useEffect(() => {
         if (state === "loading") {
             console.log("Making API call...");

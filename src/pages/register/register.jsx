@@ -4,6 +4,7 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
 export default function RegisterPage() {
+    // State variables
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [firstName, setFirstName] = useState("");
@@ -12,6 +13,7 @@ export default function RegisterPage() {
     const [phoneNumber, setPhoneNumber] = useState("");
     const navigate = useNavigate();
 
+    // Function to handle form submission
     const handleOnSubmit = (e) => {
         e.preventDefault();
         console.log({ email, password, firstName, lastName, address, phoneNumber });

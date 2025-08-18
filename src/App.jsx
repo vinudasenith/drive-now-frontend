@@ -15,12 +15,9 @@ function App() {
       <Toaster position='top-right' />
 
       <Routes path="/*">
-
-
         <Route path="/login" element={<LoginPage />} />
         <Route path="/*" element={<HomePage />} />
         <Route path="/register" element={<RegisterPage />} />
-
         <Route
           path="/admin/*"
           element={
@@ -29,9 +26,6 @@ function App() {
             </AdminRoute>
           }
         />
-
-
-
       </Routes>
     </BrowserRouter>
 

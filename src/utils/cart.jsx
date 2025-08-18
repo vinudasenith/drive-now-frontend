@@ -1,3 +1,4 @@
+//get cart
 export function loadCart() {
     let cart = localStorage.getItem("cart");
     if (cart == null) {
@@ -16,6 +17,7 @@ export function loadCart() {
     return cart;
 }
 
+//add to cart
 export function addToCart(key, qty) {
     const cart = loadCart();
     let found = false;
@@ -35,6 +37,7 @@ export function addToCart(key, qty) {
     localStorage.setItem("cart", cartString);
 }
 
+//remove from cart
 export function removeFromCart(key) {
     const cart = loadCart();
     const newCart = cart.orderedItems.filter((item) => item.key != key);
@@ -43,6 +46,7 @@ export function removeFromCart(key) {
     localStorage.setItem("cart", cartString);
 }
 
+//format date
 export function formatDate(date) {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0'); // Ensure two digits

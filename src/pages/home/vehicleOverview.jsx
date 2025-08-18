@@ -9,10 +9,13 @@ import { Link } from "react-router-dom";
 export default function VehicleOverview() {
     const params = useParams();
     console.log(params);
-    const key = params.key;
+    const key = params.key;//extract the key from the URL
+
+    //track loading state
     const [loadingStatus, setLoadingStatus] = useState("loading");
     const [vehicle, setVehicles] = useState({});
 
+    // Fetch vehicle data when component mounts
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products/${key}`).then((res) => {
             setVehicles(res.data);

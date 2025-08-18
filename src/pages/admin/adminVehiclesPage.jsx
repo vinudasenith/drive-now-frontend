@@ -4,10 +4,12 @@ import { FaEdit, FaTrash, FaPlusCircle } from "react-icons/fa";
 import axios from "axios";
 
 export default function AdminVehiclesPage() {
+    //state variables
     const [vehicles, setVehicles] = useState([]);
     const [vehiclesLoaded, setVehiclesLoaded] = useState(false);
     const navigate = useNavigate();
 
+    //fetch all vehicles from backend on component mount
     useEffect(() => {
         const token = localStorage.getItem("token");
         axios.get("http://localhost:3000/api/products", {
@@ -23,6 +25,7 @@ export default function AdminVehiclesPage() {
             });
     }, []);
 
+    // Function to handle vehicle deletion
     const handleDelete = (vehicleKey) => {
         if (window.confirm("Are you sure you want to delete this vehicle?")) {
             const token = localStorage.getItem("token");

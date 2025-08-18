@@ -3,11 +3,13 @@ import axios from "axios";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 
 export default function AdminOrdersPage() {
+    //state variables
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
     const [activeOrder, setActiveOrder] = useState(null);
     const [modalOpened, setModalOpened] = useState(false);
 
+    // Fetch orders on component mount or when 'loading' changes
     useEffect(() => {
         const fetchOrders = async () => {
             try {
@@ -33,6 +35,7 @@ export default function AdminOrdersPage() {
         }
     }, [loading]);
 
+    // Function to handle order status change
     function handleOrderStatusChange(orderId, status) {
         const token = localStorage.getItem("token");
 

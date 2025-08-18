@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function AdminUsersPage() {
+    //state variables
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [updating, setUpdating] = useState({});
 
+    //fetch all users from backend on component mount
     useEffect(() => {
         const fetchUsers = async () => {
             try {
@@ -23,6 +25,7 @@ export default function AdminUsersPage() {
         fetchUsers();
     }, []);
 
+    //block or unblock a user by email
     async function handleBlockUser(email) {
         setUpdating(prev => ({ ...prev, [email]: true }));
         const token = localStorage.getItem('token');

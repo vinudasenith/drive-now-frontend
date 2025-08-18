@@ -6,6 +6,8 @@ import mediaUpload from "../../utils/mediaUpload";
 
 
 export default function AddVehiclePage() {
+
+    //state variable for vehicle properties
     const [vehicleKey, setVehicleKey] = useState("");
     const [vehicleModel, setVehicleModel] = useState("");
     const [vehicleMake, setVehicleMake] = useState("");
@@ -20,9 +22,11 @@ export default function AddVehiclePage() {
     const [vehicleCarType, setVehicleCarType] = useState("");
     const navigate = useNavigate();
 
+    //function to add vehicle
     async function handleAddVehicle() {
         const promises = [];
 
+        //upload images
         for (let i = 0; i < vehicleImage.length; i++) {
             console.log(vehicleImage[i]);
             const promise = mediaUpload(vehicleImage[i]);
@@ -35,8 +39,11 @@ export default function AddVehiclePage() {
 
         if (token) {
             try {
+                //wait for all images uploading
                 const imageUrls = await Promise.all(promises);
                 console.log("Uploaded images:", imageUrls);
+
+                //post request to backend api regarding add vehicles
                 const result = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/vehicles`, {
                     key: vehicleKey,
                     model: vehicleModel,
@@ -64,6 +71,8 @@ export default function AddVehiclePage() {
             toast.error("You are not authorized to add items");
         }
     }
+
+
     return (
         <div className="w-full h-[650px] bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 flex items-center justify-center p-3">
             <div className="w-full max-w-3xl bg-white/10 backdrop-blur-xl p-10 rounded-2xl border border-white/20 shadow-2xl text-white">

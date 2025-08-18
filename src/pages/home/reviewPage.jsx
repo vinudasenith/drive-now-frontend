@@ -3,6 +3,8 @@ import axios from "axios";
 import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
 
 export default function ReviewPage() {
+
+    //state variables
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [userReview, setUserReview] = useState({
@@ -11,6 +13,7 @@ export default function ReviewPage() {
     });
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
+    // Fetch reviews on component mount
     useEffect(() => {
         const fetchReviews = async () => {
             try {
@@ -28,10 +31,12 @@ export default function ReviewPage() {
         fetchReviews();
     }, []);
 
+    //handle rating change
     const handleRatingChange = (rating) => {
         setUserReview({ ...userReview, rating });
     };
 
+    //submit review
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -63,6 +68,7 @@ export default function ReviewPage() {
         }
     };
 
+    //render stars
     const renderStars = (rating) => {
         const stars = [];
         const fullStars = Math.floor(rating);

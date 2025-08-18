@@ -5,11 +5,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
+
+    // State for email and password
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-
+    // Function to handle form submission
     const handleOnSubmit = async (e) => {
         e.preventDefault();
         console.log("Logging in with:", { email, password });

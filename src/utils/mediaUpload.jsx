@@ -6,6 +6,7 @@ const supabase_url = import.meta.env.VITE_SUPABASE_URL;
 
 const supabase = createClient(supabase_url, anon_key);
 
+//function to upload images
 export default function mediaUpload(file) {
 
     return new Promise((resolve, reject) => {

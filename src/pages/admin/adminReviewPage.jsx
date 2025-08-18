@@ -3,9 +3,11 @@ import axios from "axios";
 import { FaCheck, FaTrash, FaTimes } from "react-icons/fa";
 
 export default function AdminReviewPage() {
+    //state variables
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    // Fetch reviews on component mount
     useEffect(() => {
         const fetchReviews = async () => {
             try {
@@ -28,6 +30,7 @@ export default function AdminReviewPage() {
         fetchReviews();
     }, []);
 
+    //delete a review by user email
     const handleDelete = async (email) => {
         if (!window.confirm("Are you sure you want to delete this review?")) return;
 
@@ -47,6 +50,7 @@ export default function AdminReviewPage() {
         }
     };
 
+    //approve a review by user email
     const handleApprove = async (email) => {
         try {
             const token = localStorage.getItem("token");
@@ -115,8 +119,8 @@ export default function AdminReviewPage() {
                                     <td className="px-5 py-3">
                                         <span
                                             className={`px-2 py-1 rounded-full text-xs font-semibold ${review.isApproved ?
-                                                    "bg-green-100 text-green-800" :
-                                                    "bg-yellow-100 text-yellow-800"
+                                                "bg-green-100 text-green-800" :
+                                                "bg-yellow-100 text-yellow-800"
                                                 }`}
                                         >
                                             {review.isApproved ? "Approved" : "Pending"}

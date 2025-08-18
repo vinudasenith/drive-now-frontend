@@ -76,12 +76,6 @@ export default function AdminPage() {
                     <Route path="/vehicles/add" element={<AddVehiclePage />} />
                     <Route path="/vehicles/edit" element={<UpdateVehiclePage />} />
                     <Route path="/reviews" element={<AdminReviewPage />} />
-
-
-
-
-
-
                 </Routes>
 
             </main>
