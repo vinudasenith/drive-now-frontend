@@ -3,6 +3,7 @@ import { FaCarSide, FaShoppingCart, FaTimes } from 'react-icons/fa';
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
+//header
 export default function Header() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -14,12 +15,14 @@ export default function Header() {
         }
     }, []);
 
+    //logout
     const handleLogout = () => {
         localStorage.removeItem('token');
         setIsLoggedIn(false);
         navigate('/login');
     };
 
+    //mobile menu
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };

@@ -4,9 +4,11 @@ import { addToCart, removeFromCart } from "../utils/cart";
 import { FaTrash } from "react-icons/fa";
 
 export default function BookingItem({ vehicleKey, qty, refresh }) {
+    //state variables
     const [vehicle, setVehicle] = useState(null);
     const [status, setStatus] = useState("loading");
 
+    //fetch vehicle data
     useEffect(() => {
         if (status === "loading") {
             axios
