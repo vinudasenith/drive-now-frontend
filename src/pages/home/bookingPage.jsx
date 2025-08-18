@@ -177,9 +177,10 @@ export default function BookingPage() {
             return;
         }
 
-        axios.post(`http://localhost:3000/api/orders`, bookingData, {
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders`, bookingData, {
             headers: {
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
             }
         })
             .then((res) => {
