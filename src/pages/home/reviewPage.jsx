@@ -18,7 +18,7 @@ export default function ReviewPage() {
         const fetchReviews = async () => {
             try {
                 const res = await axios.get(
-                    `http://localhost:3000/api/reviews`
+                    `${import.meta.env.VITE_BACKEND_URL}/api/reviews`
 
                 );
                 setReviews(res.data);

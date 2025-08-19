@@ -12,7 +12,7 @@ export default function AdminVehiclesPage() {
     //fetch all vehicles from backend on component mount
     useEffect(() => {
         const token = localStorage.getItem("token");
-        axios.get("http://localhost:3000/api/products", {
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products`, {
             headers: { Authorization: `Bearer ${token}` },
         })
             .then((res) => {
