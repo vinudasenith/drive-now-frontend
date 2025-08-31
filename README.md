@@ -93,15 +93,9 @@ This project is licensed under the MIT License.
 
 ![Drive Now Login Page](https://github.com/vinudasenith/drive-now-frontend/blob/master/webapp-shots/login.jpeg)
 
-![Drive Now Register Page](https://github.com/vinudasenith/drive-now-frontend/blob/master/webapp-shots/registration.jpeg)
-
 ![Drive Now admin users](https://github.com/vinudasenith/drive-now-frontend/blob/master/webapp-shots/admin%20users%20managment.jpeg)
 
-![Drive Now admin vehicles](https://github.com/vinudasenith/drive-now-frontend/blob/master/webapp-shots/car-listning.jpeg)
-
 ![Drive Now admin add vehicles](https://github.com/vinudasenith/drive-now-frontend/blob/master/webapp-shots/admin%20car%20adding.jpeg)
-
-![Drive Now admin bookings](https://github.com/vinudasenith/drive-now-frontend/blob/master/webapp-shots/admin%20booking%20managemnt.jpeg)
 
 ![Drive Now admin reviews](https://github.com/vinudasenith/drive-now-frontend/blob/master/webapp-shots/admin%20review%20managment.jpeg)
 
@@ -109,9 +103,6 @@ This project is licensed under the MIT License.
 
 ![Drive Now vehicle Page](https://github.com/vinudasenith/drive-now-frontend/blob/master/webapp-shots/vehicle.jpeg)
 
-![Drive Now cart Page](https://github.com/vinudasenith/drive-now-frontend/blob/master/webapp-shots/cart.jpeg)
-
-![Drive Now contact Page](https://github.com/vinudasenith/drive-now-frontend/blob/master/webapp-shots/contact%20us.jpeg)
 
 
 
