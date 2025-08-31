@@ -17,7 +17,7 @@ export default function AdminPage() {
     return (
         <div className="w-full h-screen flex">
 
-            <aside className="w-[240px] h-screen overflow-y-auto bg-gray-900 text-white p-6 shadow-lg">
+            <aside className="w-[240px] h-screen min-h-screen  overflow-y-auto bg-gray-900 text-white p-6 shadow-lg">
 
 
                 <h2 className="text-2xl font-bold mb-8 text-yellow-400">Admin Panel</h2>
